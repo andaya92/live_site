@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+		<% include templates/header.ejs %>
+		<title><%= title %></title>
+		<link rel='stylesheet' type="text/css"  href='/stylesheets/form_style.css' />
+		<h1 style="color:red;"><%= error %></h1>
+</head>
+	<body>
+			
+		<p>
+		<fieldset>
+			<legend><%= legend_title %> in Database as</legend>
+				<p><b><span class="blackText">Dairy Key: </b></span><span class="blueText"><%= dairy_key %></span> </p>
+				<p><b><span class="blackText">Filer Name: </b></span><span class="blueText"><%= filer_name %></span> </p>
+				<p><b><span class="blackText">Milking Cows: </b></span><span class="blueText"><%= milking_cows %></span></p>
+				<p><b><span class="blackText">Dry Cows: </b></span><span class="blueText"><%= dry_cows %></span></p>
+				<p><b><span class="blackText">Heifers: </b></span><span class="blueText"><%= heifers %></span></p>
+				<p><b><span class="blackText">Total Water Consumption: </b></span><span class="blueText"><%= water_result %> gallons</span></p>
+				<p><b><span class="blackText">Total manure: </b></span><span class="blueText"><%= total_manure %></span></p>
+				<p><b><span class="blackText">Total Ammonium: </b></span><span class="blueText"><%= ammonium_total %></span></p>
+				<p><b><span class="blackText">Available Ammonium: </b></span><span class="blueText"><%= ammonium_available %></span></p>
+				<p><b><span class="blackText">Total Nitrogen: </b></span><span class="blueText"><%= nitrogen_total %></span></p>
+				<p><b><span class="blackText">Volitization Loss: </b></span><span class="blueText"><%= volatilization_loss %>%</span></p>
+		</fieldset>	 	
+		</p>
+		
+		
+		<p style="clear: both;">
+		<button onclick="printPage()">Print this page</button>
+		 <button type="button" id="edit_details" >.     Edit details     .</button> 
+		 <button type="button" id="cancel_and_close">Close</button>
+	 </p>
+	 
+	<script>
+		function printPage() {
+	   	 window.print();
+		}
+	</script>
+	<script>
+				document.getElementById("edit_details").addEventListener("click", function(){
+				//var newurl = location.hostname + ":" + location.port + 9 "..." + location.pathname;
+				//alert("Need to create an edit for forms");
+				window.location.assign( "/editEntry/form?id=<%= form_id %> ");
+				}, false);
+	</script>
+	<script>
+			document.getElementById("cancel_and_close").addEventListener("click", function(){
+				//var newurl = location.hostname + ":" + location.port;
+				var returnToUrlCaller =location.pathname;
+				//alert(returnToUrlCaller );
+				if(returnToUrlCaller == '/file_form'){
+					window.location.assign("/file_form");
+					return;
+				}
+				window.location.assign("/");
+				}, false);
+	</script>
+		
+	</body>
+</html>

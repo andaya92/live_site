@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title><%= title %></title>
+		<link rel='stylesheet' type="text/css"  href='/stylesheets/form_style.css' />
+		<% include templates/header.ejs %>
+		<h1 style="color:red;"><%= error %></h1>
+</head>
+<body>
+	
+	
+	<p>
+	<fieldset>
+		<legend><%= legend_title %> in Database as</legend>
+			<p><b><span class="blackText">First: </b></span><span class="blueText"><%= first_name %></span> </p>
+			<p><b><span class="blackText">Last: </b></span><span class="blueText"><%= last_name %></span></p>
+			<p><b><span class="blackText">E-mail: </b></span><span class="blueText"><%= email %></span></p>
+			<p><b><span class="blackText">Street: </b></span><span class="blueText"><%= street %></span></p>
+			<p><b><span class="blackText">City: </b></span><span class="blueText"><%= city %></span></p>
+			<p><b><span class="blackText">State: </b></span><span class="blueText"><%= state %></span></p>
+			<p><b><span class="blackText">Zip: </b></span><span class="blueText"><%= zip %></span></p>
+			<p><b><span class="blackText">Phone: </b></span><span class="blueText"><%= phone %></span></p>
+			<p><b><span class="blackText">Customer ID: </b></span><span class="blueText"><%= customer_key %></span></p>
+	</fieldset>	
+	</p>
+
+
+
+	<p style="clear: both;">
+		<button onclick="printPage()">Print this page</button>
+		 <button type="button" id="edit_details" >.     Edit details     .</button> 
+		 <button type="button" id="cancel_and_close">Close</button>
+	 </p>
+	 
+	<script>
+		function printPage() {
+	   	 window.print();
+		}
+	</script>
+	<script>
+				document.getElementById("edit_details").addEventListener("click", function(){
+				//var newurl = location.hostname + ":" + location.port + 9 "..." + location.pathname;
+				//alert(newurl );
+				window.location.assign( "/editEntry?id=<%= customer_id %> ");
+				}, false);
+	</script>
+	<script>
+			document.getElementById("cancel_and_close").addEventListener("click", function(){
+				//var newurl = location.hostname + ":" + location.port;
+				var returnToUrlCaller =location.pathname;
+				//alert(returnToUrlCaller );
+				if(returnToUrlCaller == '/create_form'){
+					window.location.assign("/create_form");
+					return;
+				}
+				window.location.assign("/about");
+				}, false);
+	</script>
+	
+</body>
+</html>

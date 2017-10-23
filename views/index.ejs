@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  
+  	<% include templates/header.ejs %>
+  
+    <h1><%= name %></h1>
+  
+   
+    
+    
+    <ul>
+	    <% for(var i =1; i<=7; i++){%>
+	   			<li> <%= i + ". " + name.substring(0,i);  %></li>
+	    <% } %>
+	      <% for(var i =6; i>=1; i--){%>
+	   			<li> <%= i + ". " + name.substring(0,i);  %></li>
+	    <% } %>
+	    
+    </ul>
+  </body>
+</html>

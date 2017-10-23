@@ -1,0 +1,18 @@
+{
+  "name": "expressToImpress",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "build": "taskr"
+  },
+  "dependencies": {
+    "ejs": "*",
+    "express": "3.2.6",
+    "express-validator": "^4.2.1"
+  },
+  "devDependencies": {
+    "fly": "^2.0.6",
+    "taskr": "^1.1.0"
+  }
+}

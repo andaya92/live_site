@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title><%= title %></title>
+		<link rel='stylesheet'  href='/stylesheets/form_style.css' />
+		
+		<% include templates/header.ejs %>
+</head>
+<body>
+
+	<p>
+	<p>Dairy id: <%= dairy_id %></p>
+	<form action="editEntry/updateForm_dairy" method="post">
+	<fieldset>
+		<legend>Edit Dairy</legend>
+			<p><label class="field" for="dairy_name" width="50px">Dairy name:  </label><input type="text" name="dairy_name" class="textbox-300" width="50px" value="<%= dairy_name %>" required/>
+			<label class="field" for="contact_name" width="50px">Contact name:  </label><input type="text" name="contact_name" class="textbox-300" width="50px" value="<%= contact_name %>" required/>
+			<label class="field" for="contact_email" width="50px">Contact E-mail: </label><input type="email" name="contact_email" value="<%= contact_email %>" class="textbox-300" width="50px"/>
+			<label class="field" for="customer_key" width="50px">Customer ID: </label><input type="text" name="customer_key" pattern="[0-9]{4}" value="<%= customer_key %>" class="textbox-300" width="50px"/></p><br>
+			
+			
+			<p><label class="field" for="phone" width="50px">Phone #</label><input type="text" name="phone" pattern="[0-9]{10}" title="10-digit number" class="textbox-300" width="50px" value="<%= phone %>" required/>
+			<label class="field" for="street" width="50px">Street: </label><input type="text" name="street"   class="textbox-300" width="50px" value="<%= street %>"/>
+			<label class="field" for="city" width="50px">City: </label><input type="text" name="city"   class="textbox-300" width="50px" value="<%= city %>" required/>
+			<label class="field" for="state" width="50px">State: </label><input type="text" name="state"   class="textbox-300" width="50px" value="<%= state %>"/>
+			<label class="field" for="zip" width="50px">Zip: </label><input type="text" name="zip"  pattern="[0-9]{5}" title="5-digit zip" class="textbox-300" width="50px" value="<%= zip %>" required/></p>
+    		<input type="hidden" name="dairy_id" value="<%= dairy_id %>"/>
+   			 <p><input type="submit" value="Submit"> <button type="button" id="cancel_and_close">Close</button></p>
+	</fieldset>
+</form>
+	</p>
+	<script>
+			document.getElementById("cancel_and_close").addEventListener("click", function(){
+				var newurl = location.hostname + ":" + location.port;
+				//alert(newurl + "/create_form");
+				
+				window.location.assign( "/about ");
+				
+				
+				}, false);
+	</script>
+</body>
+</html>

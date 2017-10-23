@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title><%= title %></title>
+		<link rel='stylesheet'  href='/stylesheets/form_style.css' />
+		
+		<% include templates/header.ejs %>
+</head>
+<body>
+<h1 style="color:red;"><%= error %></h1>
+	<p>
+	
+	
+	
+	<form action="" method="post">
+	<fieldset>
+		<legend>Add Customer</legend>
+			<p><label class="field" for="first_name" width="50px">First name:  </label><input type="text" name="first_name" class="textbox-300" width="50px" placeholder="Billy" required/>
+			<label class="field" for="last_name" width="50px">Last name:  </label><input type="text" name="last_name" class="textbox-300" width="50px" placeholder="Bob" required/>
+			<label class="field" for="email" width="50px">E-mail: </label><input type="email" name="email" class="textbox-300" width="50px"/>
+			<label class="field" for="customer_key" width="50px">Customer Key: </label><input type="text" name="customer_key" pattern="[0-9]{4}" class="textbox-300" width="50px"/></p><br>
+			
+			
+			<p><label class="field" for="phone" width="50px">Phone #</label><input type="text" name="phone" pattern="[0-9]{10}" title="10-digit number" class="textbox-300" width="50px" placeholder="### ### ####" required/>
+			<label class="field" for="street" width="50px">Street: </label><input type="text" name="street"   class="textbox-300" width="50px" placeholder="123 G Street"/>
+			<label class="field" for="city" width="50px">City: </label><input type="text" name="city" pattern="[A-Z, a-z]*" title="No numbers"  class="textbox-300" width="50px" placeholder="Detroit" required/>
+			<label class="field" for="state" width="50px">State: </label><input type="text" name="state" pattern="[A-Z,a-z]{2}" title="2 Letter abreviation"  class="textbox-300" width="50px" value="CA"/>
+			<label class="field" for="zip" width="50px">Zip: </label><input type="text" name="zip"  pattern="[0-9]{5}" title="5-digit zip" class="textbox-300" width="50px" placeholder="95336" required/></p>
+    	
+   			 <p><input type="submit" value="Submit"></p>
+	</fieldset>
+   			 
+</form>
+	</p>
+</body>
+</html>

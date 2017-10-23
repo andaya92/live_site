@@ -1,0 +1,39 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+form{
+	 display: inline-block;
+}
+fieldset{
+	 -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+ 
+ 
+  padding: 20px;
+  overflow: hidden;
+
+  font: normal 16px/1 "Times New Roman", Times, serif;
+  
+  border: #0199d9;
+  border-width:1px;
+  border-style:solid;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  background: #FFFFFF;
+  -webkit-box-shadow: 1px 1px 1px 1px rgba(1,153,217,0.3) ;
+  box-shadow: 1px 1px 1px 0 rgba(1,153,217,0.3) ;
+  text-shadow: 1px 1px 1px rgba(1,153,217,0.2) ;
+}
+legend{
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+	border: #0199d9;
+ 	border-width:1px;
+ 	border-style:solid;
+}

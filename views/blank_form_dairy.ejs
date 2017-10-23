@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title><%= title %></title>
+		<link rel='stylesheet'  href='/stylesheets/form_style.css' />
+		<% include templates/header.ejs %>
+		<style>
+			.scrollBox{
+		border: 2px solid green;
+		border-color: rgba(01,131,230,.75);
+    	padding: 10px;
+		background-color: #00000;
+   	 	height: 80px;
+   	 	width-min: 300px;
+   	 	width: 750px;
+    	overflow: scroll;
+    	clear:both;
+    	padding: 5px;
+		}
+		
+		 ul:focus{
+			background-color: lightblue;
+		}
+		.list_item{
+		list-style-type:none;
+		
+		}
+		</style>
+</head>
+<body>
+<h1 style="color:red;"><%= error %></h1>
+	
+
+	<!-- Prompt user to search for customers -->
+<h2>Choose Customer</h2>
+<div class="scrollBox">
+	<% if(custResult != null){ %>
+			<% custResult.forEach(function(custData){ %>
+			<ul>
+				<li style = "tabindex= 0" class="list_item" id="list_item_<%= custData._id %>">
+					<b><span class="blackText">Customer Name: </b></span><span class="blueText"><%= custData.first_name%> (<%= custData._id %>)</span>
+					<script>
+					//onClick -> get element by id and save the value to it, then restore it
+						
+						document.getElementById("list_item_<%= custData._id %>").addEventListener("click", function(){
+									document.getElementById("customerId").value = <%= custData._id %>;
+									var x = document.getElementById("customerId");
+									//alert();
+									document.getElementById("list_item_<%= custData._id %>").focus();
+									;
+									}, false);
+					</script> 
+				</li>
+			</ul>
+			<% }); %>
+	<% } %>
+</div>
+
+
+	<!-- Once customer is selected, get _id and pass to form when creating new dairy -->
+
+	
+	
+	
+		<!--Create new dairy below, -->
+<p>
+	<form action="/create_form_dairy" method="post">
+	<fieldset>
+		<legend>Add Dairy</legend>
+			<p><label class="field"  for="customer_id" width="50px">Customer ID:  </label><input id="customerId" type="text" name="customer_id" class="textbox-300" width="50px" placeholder="1,2,3..." title="Choose Customer, Customer ID and Dairy name must be Unique" readonly required/>
+			<label class="field" for="dairy_name" width="50px">Dairy name:  </label><input type="text" name="dairy_name" class="textbox-300" width="50px" placeholder="HaveMilk" required/>
+			<label class="field" for="contact_name" width="50px">Contact name:  </label><input type="text" name="contact_name" class="textbox-300" width="50px" placeholder="Sally Mae" required/>
+			<label class="field" for="contact_email" width="50px">Contact E-mail: </label><input type="email" name="contact_email" class="textbox-300" width="50px"/>
+			<label class="field" for="customer_key" width="50px">Customer Key: </label><input type="text" name="customer_key" pattern="[0-9]{4}" title="4 Digits" class="textbox-300" width="50px"/></p><br>
+			
+			
+			<p><label class="field" for="dairy_phone" width="50px">Dairy Phone #</label><input type="text" name="dairy_phone" pattern="[0-9]{10}" title="10-digit number" class="textbox-300" width="50px" placeholder="### ### ####" required/>
+			<label class="field" for="dairy_street" width="50px">Street: </label><input type="text" name="dairy_street"   class="textbox-300" width="50px" placeholder="123 G Street"/>
+			<label class="field" for="dairy_city" width="50px">City: </label><input type="text" name="dairy_city" pattern="[A-Z, a-z,-,/]*" title="No numbers"  class="textbox-300" width="50px" placeholder="Detroit" required/>
+			<label class="field" for="dairy_state" width="50px">State: </label><input type="text" name="dairy_state" pattern="[A-Z,a-z]{2}" title="2 Letter abreviation"  class="textbox-300" width="50px" value="CA"/>
+			<label class="field" for="dairy_zip" width="50px">Zip: </label><input type="text" name="dairy_zip"  pattern="[0-9]{5}" title="5-digit zip" class="textbox-300" width="50px" placeholder="95336" required/></p>
+    	
+   			 <p><input type="submit" value="Submit"></p>
+	</fieldset>
+   			 
+</form>
+	</p>
+</body>
+</html>

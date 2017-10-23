@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+	.padLeft{
+	padding-left: 5px;
+	}
+	.container{
+	display: inline-block;
+	}
+	.clear{
+	clear:both;
+	}
+	.itemBorder{
+	border: 1px solid;
+	border-color: rgba(01,131,230,.5);
+	}
+	fieldset{
+	width: 750px;
+	 display: inline-block;
+	}
+	div.scrollBox{
+		border: 2px solid;
+		border-color: rgba(01,131,230,.75);
+    	padding: 10px;
+		background-color: #FFFFFF;
+   	 	height: 500px;
+    	overflow: scroll;
+    	clear:both;
+    	min-width:750px;
+    	
+    	padding: 20px;
+	}
+	</Style>
+		<title><%= title %></title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<% include templates/header.ejs %>
+		<h1><%= errors %> </h1>
+</head>
+<body >
+	<p>
+		
+
+	<form action="" method="post" id="cust_search_form">
+	<fieldset >
+		<legend>Search Customers</legend>
+			<p><label class="field" for="first_name" width="50px">First name:  </label><input type="text" name="first_name" class="textbox-300" width="50px" placeholder="Billy"/>
+			<label class="field" for="last_name" width="50px">Last name:  </label><input type="text" name="last_name" class="textbox-300" width="50px" placeholder="Bob"/><br><br>
+			<label class="field" for="email" width="50px">E-mail: </label><input type="email" name="email" class="textbox-300" width="50px"/></p>
+			
+			
+			<p><label class="field" for="phone" width="50px">Phone #</label><input type="text" name="phone" pattern="[0-9]*" title="10 Digit phone number" class="textbox-300" width="50px" placeholder="###-###-####"/>
+			<label class="field" for="city" width="50px">City: </label><input type="text" name="city"   class="textbox-300" width="50px" placeholder="Detroit"/>
+			<label class="field" for="zip" width="50px">Zip: </label><input type="text" name="zip"   class="textbox-300" width="50px" placeholder="95336"/></p>
+    	
+   			
+	</fieldset>
+   			 
+
+<!--                                       SPLIT BETWEEN SEACH FORMS -->
+		
+
+	<form action="" method="post" id="dairy_search_form">
+	<fieldset>
+		<legend>Search Dairies</legend>
+			<p><label class="field" for="dairy_name" width="50px">Dairy name:  </label><input type="text" name="dairy_name" class="textbox-300" width="50px" placeholder="DMerica"/>
+			<label class="field" for="contact_name" width="50px">Contact name:  </label><input type="text" name="contact_name" class="textbox-300" width="50px" placeholder="Sally Mae"/><br><br>
+			<label class="field" for=contact_email" width="25px">E-mail: </label><input type="email" name="contact_email" class="textbox-300" width="25px"/></p>
+			
+			
+			<p><label class="field" for="dairy_phone" width="50px">Dairy Phone #</label><input type="text" name="dairy_phone" pattern="[0-9]*" title="10 Digit phone number" class="textbox-300" width="50px" placeholder="###-###-####"/>
+			<label class="field" for="dairy_city" width="50px">City: </label><input type="text" name="dairy_city"   class="textbox-300" width="50px" placeholder="Detroit"/>
+			<label class="field" for="dairy_zip" width="50px">Zip: </label><input type="text" name="dairy_zip"   class="textbox-300" width="50px" placeholder="95336"/></p>
+    	
+   			 
+	</fieldset>
+   			<p><input type="submit" value="Submit"></p> 
+</form>
+	</p>
+	
+	
+	
+
+		
+
+	
+	<!-- Scroll boxes -->
+		<!-- Customer container-->
+	<div class="container"  id="c_1">
+			<h2 class="padLeft">Customers</h2>
+			<div class="scrollBox">
+	<% if(resultData != undefined ){ %>
+		<% resultData.forEach(function(roww){ %>
+	
+			<p class="itemBorder">
+			<h1>My Name is: <%= roww.first_name + " " + roww.last_name %> </h1>
+			<h1>_ID: <%= roww._id %> </h1>
+			<h2>E-mail: <%= roww.email %> </h2>
+			<h2>City: <%= roww.city %> </h2>
+			<h2>Phone: <%= roww.phone %> </h2><br>
+			<button type="button" id="<%= roww._id %>" >Open details...</button> <button type="button" id="<%= roww._id %>a" >Edit details...</button>
+			<script>
+				document.getElementById("<%= roww._id %>").addEventListener("click", function(){
+				var newurl = location.hostname + ":" + location.port;
+				//alert(newurl + "/create_form");
+				window.location.assign( "/showDetails?id=<%= roww._id %>&table=1 ");
+				}, false);
+				
+			</script>
+				<script>
+				document.getElementById("<%= roww._id %>a").addEventListener("click", function(){
+				var newurl = location.hostname + ":" + location.port;
+				//alert(newurl + "/create_form");
+				
+				window.location.assign( "/editEntry?id=<%= roww._id %>&table=1 ");
+				
+				}, false);
+			</script>
+			</p>
+		<% }); %>
+	<% } %>
+	</div>
+	</div>
+	<!-- Dairy container-->
+	<div class="container"  id="c_2">
+			<h2 class="padLeft">Dairies</h2>
+			<div class="scrollBox">
+	<% if(dairy_resultData != undefined ){ %>
+		<% dairy_resultData.forEach(function(row){ %>
+	
+			<p class="itemBorder">
+			
+			<h1>Dairy Name: <%= row.dairy_name %> </h1>
+			<h1>_ID: <%= row.dairy_id %> </h1>
+			<h2>Contact Name: <%= row.contact_name %> </h2>
+			<h2>Contact E-mail: <%= row.contact_email %> </h2>
+			<h2>City: <%= row.city %> </h2>
+			<h2>Phone: <%= row.dairy_phone %> </h2><br>
+			<button type="button" id="<%= row._id %>detail" >Open details...</button> <button type="button" id="<%= row._id %>ab" >Edit details...</button>
+			<script>
+				document.getElementById("<%= row._id %>detail").addEventListener("click", function(){
+				var newurl = location.hostname + ":" + location.port;
+				//alert(newurl + "/create_form");
+				window.location.assign( "/showDetails?id=<%= row.dairy_id %>&table=0 ");
+				}, false);
+				
+			</script>
+				<script>
+				document.getElementById("<%= row._id %>ab").addEventListener("click", function(){
+				var newurl = location.hostname + ":" + location.port;
+				//alert(newurl + "/create_form");
+				
+				window.location.assign( "/editEntry?id=<%= row.dairy_id %>&table=2 ");
+				
+				}, false);
+			</script>
+			</p>
+		<% }); %>
+	<% } %>
+	</div>
+</div>
+	
+</body>
+</html>

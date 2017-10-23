@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title><%= title %></title>
+		<link rel='stylesheet'  href='/stylesheets/form_style.css' />
+		<% include templates/header.ejs %>
+		<style>
+			
+			
+			.scrollBox{
+			border: 2px solid green;
+			border-color: rgba(01,131,230,.75);
+	    	padding: 10px;
+			background-color: #00000;
+	   	 	height: 80px;
+	   	 	width-min: 300px;
+	   	 	width: 750px;
+	    	overflow: scroll;
+	    	clear:both;
+	    	padding: 5px;
+			}
+		
+			.inner{
+				flex-wrap: wrap;
+			}
+		
+			.list_item{
+			list-style-type:none;
+			
+			}
+		</style>
+</head>
+<body>
+<h1 style="color:red;"><%= error %></h1>
+	
+
+	<!-- Prompt user to search for customers -->
+<h2>Choose Dairy</h2>
+<div class="scrollBox">
+	<% if(dairyResult != null){ %>
+			<%dairyResult.forEach(function(data){ %>
+			<ul>
+				<li class="list_item" id="list_item_<%= data.dairy_id %>">
+					<b><span class="blackText">Dairy Name: </b></span><span class="blueText"><%= data.dairy_name%> (<%= data.dairy_id %>)</span>
+					<script>
+					//onClick -> get element by id and save the value to it, then restore it
+						document.getElementById("list_item_<%= data.dairy_id %>").addEventListener("click", function(){
+							document.getElementById("dairyId").value = <%= data.dairy_id %>;
+							var x = document.getElementById("dairyId").value;
+							//alert("TESTING.... " + x);
+									}, false);
+					</script> 
+				</li>
+			</ul>
+			<% }); %>
+	<% } %>
+</div>
+
+
+	<!-- Once customer is selected, get _id and pass to form when creating new dairy -->
+
+	
+	
+	
+		<!--Create new dairy below, -->
+
+	<form action="" method="post">
+	<fieldset  class="outer">
+		<legend><%= hard_form_name %></legend>
+		
+		<fieldset class="inner">
+			<legend>Contact</legend>
+				<p><label class="field"  for="dairy_key" width="50px">Dairy Key:  </label><input id="dairyId" type="text" name="dairy_key" class="textbox-300" width="50px" placeholder="1,2,3..." title="Choose Dairy key | Dairy Key and form name must be Unique" readonly required/></p>
+				<br><p><label class="field"  for="form_name" width="50px">Form:  </label><input type="text" name="form_name" class="textbox-300" width="50px" placeholder="report" value="<%= hard_form_name %>" readonly required/></p>
+				<br><p><label class="field" for="filer_name" width="50px">Name (of filer):  </label><input type="text" name="filer_name" class="textbox-300" width="50px" placeholder="Sally Mae" required/></p>
+		</fieldset>
+		
+		<fieldset class="inner">
+			<legend>Cows</legend>
+			<label class="field" for="milking_cows" width="50px">Number of mCows: </label><input type="text" name="milking_cows" class="textbox-300" width="50px" pattern="[0-9]*" /><br><br>
+			<label class="field" for="dry_cows" width="50px">Number of dCows: </label><input type="text" name="dry_cows" pattern="[0-9]*" title="Digits" class="textbox-300" width="50px"/><br><br>
+			<label class="field" for="heifers" width="50px">Number of heifers: </label><input type="text" name="heifers" pattern="[0-9]*" title="Digits" class="textbox-300" width="50px"/>
+		</fieldset>
+		
+		<fieldset class="inner">
+			<legend> Waste </legend>
+			<label class="field" for="total_manure" width="50px">Total Manure: </label><input type="text" name="total_manure" class="textbox-300" width="50px" pattern="[0-9]*" /><br><br>
+			<label class="field" for="ammonium_total" width="50px">Total Ammonium: </label><input type="text" name="ammonium_total" pattern="[0-9]*" title="Digits" class="textbox-300" width="50px"/><br><br>
+			<label class="field" for="nitrogen_total" width="50px">Total Nitrogen: </label><input type="text" name="nitrogen_total" pattern="[0-9]*" title="Digits" class="textbox-300" width="50px"/>
+			<label class="field" for="volitization_loss" width="50px">Volitization Loss: </label><input type="text" name="volitization_loss" pattern="[0-9]{2}" title="2-Digits" class="textbox-300" width="50px"/>
+		</fieldset>	
+			
+			
+   			
+	</fieldset>
+		<div style="clear:both;">
+			<input  type="submit" value="Submit"> 
+		</div>
+		
+	
+   			 
+</form>
+	
+</body>
+</html>

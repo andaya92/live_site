@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+	.padLeft{
+	padding-left: 5px;
+	}
+	.container{
+	display: inline-block;
+	}
+	.clear{
+	clear:both;
+	}
+	.itemBorder{
+	border: 1px solid;
+	border-color: rgba(01,131,230,.5);
+	}
+	fieldset{
+	width: 750px;
+	 display: inline-block;
+	}
+	div.scrollBox{
+	display:block;
+		border: 2px solid;
+		border-color: rgba(01,131,230,.75);
+    	padding: 10px;
+		background-color: #FFFFFF;
+   	 	height: 300px;
+    	overflow: scroll;
+		width: 500px;    	
+    	padding: 20px;
+	}
+	</Style>
+		<title><%= title %></title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<% include templates/header.ejs %>
+		<h1><%= errors %></h1>
+</head>
+<body>
+	
+	<form action="" method="post" style="display:block;">
+	<fieldset >
+		<legend>Search Forms</legend>
+			<p><label class="field" for="dairy_Key" width="50px">Dairy key:  </label><input type="text" name="dairy_Key" class="textbox-300" width="50px" placeholder="0000" />
+			<label class="field" for="dairy_id" width="50px">Dairy ID:  </label><input type="text" name="dairy_id" class="textbox-300" width="50px" placeholder="1" /><br><br>
+			<label class="field" for="filer_name" width="50px">Filer Name: </label><input type="text" name="filer_name" class="textbox-300" width="50px" placeholder="Mary"/>
+			<label class="field" for="date" width="50px">Date:  </label><input type="text" name="date" class="textbox-300" width="50px" placeholder="Aug"/></p>
+			<input type="submit" label="Submit"/>
+    	
+   			
+	</fieldset>
+	</form>
+	
+	<div class="container"  >
+			<h2 class="padLeft">Forms</h2>
+			<div class="scrollBox">
+	<% if(resultData != undefined ){ %>
+		<% resultData.forEach(function(roww){ %>
+	
+			<p class="itemBorder">
+			<h1>Form ID: <%= roww.form_id %> </h1>
+			<h1>Filer Name: <%= roww.filer_name %> </h1>
+			<h1>Dairy Key : <%= roww.dairy_key %> </h1>
+			
+			<h2>Date: <%= roww.form_date %> </h2>
+			
+			<button type="button" id="<%= roww.form_id %>" >Open details...</button> <button type="button" id="<%= roww.form_id %>a" >Edit details...</button>
+			<script>
+				document.getElementById("<%= roww.form_id %>").addEventListener("click", function(){
+				var newurl = location.hostname + ":" + location.port;
+				alert( "/show details <%= roww.form_id %>");
+				window.location.assign( "/showDetails/form?form_id=<%= roww.form_id %> ");
+				}, false);
+				
+			</script>
+				<script>
+				document.getElementById("<%= roww.form_id %>a").addEventListener("click", function(){
+				var newurl = location.hostname + ":" + location.port;
+				//alert(newurl + "/edit details<%= roww.form_id %>");
+				
+				window.location.assign( "/editEntry/form?id=<%= roww.form_id %> ");
+				
+				}, false);
+			</script>
+			</p>
+		<% }); %>
+	<% } %>
+	</div>
+	</div>
+	
+	
+</body>
+</html>

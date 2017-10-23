@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title><%= title %></title>
+		<link rel='stylesheet' type="text/css"  href='/stylesheets/form_style.css' />
+		<% include templates/header.ejs %>
+		<h1 style="color:red;"><%= error %></h1>
+</head>
+<body>
+	
+	
+	<p>
+	<fieldset>
+		<legend><%= legend_title %> in Database as</legend>
+			<p><b><span class="blackText">Name: </b></span><span class="blueText"><%= dairy_name %></span> </p>
+			<p><b><span class="blackText">Customer ID: </b></span><span class="blueText"><%= customer_key %></span> </p>
+			<p><b><span class="blackText">Phone: </b></span><span class="blueText"><%= dairy_phone %></span></p>
+			<p><b><span class="blackText">Contact name: </b></span><span class="blueText"><%= contact_name %></span></p>
+			<p><b><span class="blackText">E-mail: </b></span><span class="blueText"><%= contact_email %></span></p>
+			<p><b><span class="blackText">Street: </b></span><span class="blueText"><%= dairy_street %></span></p>
+			<p><b><span class="blackText">City: </b></span><span class="blueText"><%= dairy_city %></span></p>
+			<p><b><span class="blackText">State: </b></span><span class="blueText"><%= dairy_state %></span></p>
+			<p><b><span class="blackText">Zip: </b></span><span class="blueText"><%= dairy_zip %></span></p>
+	</fieldset>	 	
+	</p>
+
+
+
+	<p style="clear: both;">
+		<button onclick="printPage()">Print this page</button>
+		 <button type="button" id="edit_details" >.     Edit details     .</button> 
+		 <button type="button" id="cancel_and_close">Close</button>
+	 </p>
+	 
+	<script>
+		function printPage() {
+	   	 window.print();
+		}
+	</script>
+	<script>
+				document.getElementById("edit_details").addEventListener("click", function(){
+				//var newurl = location.hostname + ":" + location.port + 9 "..." + location.pathname;
+				//alert("Need to create an editEntry for dairies");
+				window.location.assign( "/editEntry?id=<%= dairy_id %>&table=2 ");
+				}, false);
+	</script>
+	<script>
+			document.getElementById("cancel_and_close").addEventListener("click", function(){
+				//var newurl = location.hostname + ":" + location.port;
+				var returnToUrlCaller =location.pathname;
+				//alert(returnToUrlCaller );
+				if(returnToUrlCaller == '/create_form_dairy'){
+					window.location.assign("/create_form_dairy");
+					return;
+				}
+				window.location.assign("/about");
+				}, false);
+	</script>
+	
+</body>
+</html>
