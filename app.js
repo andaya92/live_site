@@ -24,7 +24,7 @@ var app = express();
 
 // all environments
 //how views are handled
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 80);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.favicon());
@@ -67,6 +67,6 @@ app.post('/editEntry/form', editEntry.updateForm_report);
 
 
 
-http.createServer(app).listen(app.get('port'), function(){
+http.createServer(app).listen(app.get('port'), '10.138.8.38', function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
