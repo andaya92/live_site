@@ -23,7 +23,7 @@ var app = express();
 
 
 // all environments
-//how views are handled
+//how views are handleda
 app.set('port', process.env.PORT || 80);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
