@@ -67,6 +67,6 @@ app.post('/editEntry/form', editEntry.updateForm_report);
 
 
 
-http.createServer(app).listen(app.get('port'), '10.138.8.38', function(){
+http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
