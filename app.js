@@ -5,15 +5,15 @@
 
 var express = require('express')
   , routes = require('./routes')
-  , file_form = require('./routes/file_form')
+  , file_form = require('./routes/file_form.js')
   , http = require('http')
   , path = require('path');
 //grab the javascript file
-var about = require('./routes/about');
-var create_form = require('./routes/create_form');
-var showDetails = require('./routes/showDetails');
-var editEntry = require('./routes/editEntry');
-var search_form = require('./routes/search_form');
+var about = require('./routes/about.js');
+var create_form = require('./routes/create_form.js');
+var showDetails = require('./routes/showDetails.js');
+var editEntry = require('./routes/editEntry.js');
+var search_form = require('./routes/search_form.js');
 
 
 var expressValidator = require('express-validator');
