@@ -7,7 +7,7 @@ exports.list = function(req, res, next){
 	var error = "";
 	var fakeData = {dairy_name: " Error with db",
 					dairy_id: 0 };
-	}
+	
 	if(req.query.error != null){
 		error = req.query.error;
 	}
