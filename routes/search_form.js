@@ -44,13 +44,14 @@ exports.display_form = function(req, res, next){
 exports.display_results = function(req, res, next){
 	
 	var dairy_key = (req.body.dairy_key != null || req.body.dairy_key != undefined && req.body.dairy_key != " ")? req.body.dairy_key : " ";
+	var form_id = (req.body.form_id != null || req.body.form_id != undefined && req.body.form_id != " ")? req.body.form_id : " ";
 	var filer_name = (req.body.filer_name != null || req.body.filer_name != undefined && req.body.filer_name != " ")? req.body.filer_name : " ";
 	var date = (req.body.date != null || req.body.date != undefined && req.body.date != " ")? req.body.date : " ";
 	var projection = "*";
-	console.log("search form results: ","." + dairy_key + ".", filer_name, '.' +  date + '.');
+	console.log("search form results: ", form_id, "." + dairy_key + ".", filer_name, '.' +  date + '.');
 	
-	var col_key = ['form_id', 'dairy_id', 'dairy_key', 'filer_name', 'date'];
-	var col_values = [1, dairy_id, dairy_key,  filer_name, date];
+	var col_key = ['form_id', 'form_id', 'dairy_key', 'filer_name', 'date'];
+	var col_values = [1, form_id, dairy_key,  filer_name, date];
 	var fieldInput = testInput(col_values);
 	var table = "annual_report";
 	
