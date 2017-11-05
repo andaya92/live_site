@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+ <meta charset="UTF-8">
+
+
+  <% include templates/header.ejs %>
+</head>
+<body>
+
+
+
+
+	<form action="" method="post">
+		<fieldset legend="I am Legend">
+				<label class="field" for="field1">Dataset 1</label><input type="text" name="field1" value=" " placeholder="Dataset 1"/>
+				<label class="field" for="field2">Dataset 2</label><input type="text" name="field2" value=" " placeholder="Dataset 2"/>
+				<input type="submit" value="Suh-mit"></input>
+		</fieldset>
+	</form>
+
+
+
+
+	<!--  Graphing solution through plotly -->
+	<!-- <iframe width="900" height="800" frameborder="0" scrolling="no" src="<%= source %>"></iframe> -->
+	<div style="width: 900px; height: 300px;">
+		<canvas id="myChart" width="400" height="400"></canvas>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
+	<script type="text/javascript" >
+	
+	var ctx = document.getElementById("myChart");
+	
+	var mydata = <%= JSON.stringify(fake_data) %>;
+	var mydata1 = <%= JSON.stringify(fake_data1) %>;
+	var mylabels = <%- JSON.stringify(labels) %>;
+	
+	
+	//alert(mylabels);
+	
+	var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: mylabels,
+        datasets: [
+        {
+            label: 'Data Set 1',
+            data: mydata,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        },
+        {
+            label:  'Data Set 2' ,
+            data: mydata1	,
+            backgroundColor: [
+            	'rgba(255, 159, 64, 0.2)',
+            	'rgba(153, 102, 255, 0.2)',
+            	'rgba(75, 192, 192, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                
+               
+          
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }
+        ]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+
+myChart.render({
+    duration: 800,
+    lazy: false,
+    easing: 'easeOutBounce'
+});
+
+</script>
+
+
+</body>
+</html>
