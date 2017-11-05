@@ -14,6 +14,7 @@ var create_form = require('./routes/create_form.js');
 var showDetails = require('./routes/showDetails.js');
 var editEntry = require('./routes/editEntry.js');
 var search_form = require('./routes/search_form.js');
+var chart_pie = require('./routes/chart_pie.js');
 
 
 var expressValidator = require('express-validator');
@@ -53,6 +54,7 @@ app.get('/showDetails/form', showDetails.showPage_form);
 app.get('/editEntry', editEntry.showPage);
 app.get('/search_form', search_form.display_form);
 app.get('/editEntry/form', editEntry.edit_form);
+app.get('/chart_pie', chart_pie.getChartInfo);
 
 
 app.post('/file_form', file_form.post_annual_report);
@@ -63,6 +65,7 @@ app.post('/editEntry', editEntry.updateForm);
 app.post('/editEntry/updateForm_dairy', editEntry.updateForm_dairy);
 app.post('/search_form', search_form.display_results);
 app.post('/editEntry/form', editEntry.updateForm_report);
+app.post('/chart_pie', chart_pie.showChart);
 //app.post('/showDetails', showDetails.post);
 
 
