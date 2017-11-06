@@ -15,7 +15,7 @@ exports.showChart = function(req, res, next){
 	//pass an id to the grapghs so we know which data set we are currently looking at.....
 	console.log('Showing chart info...');
 	console.log('Fields: ', req.body.field1, req.body.field2);
-	var source = '//plot.ly/~andaya92/2.embed';
+	//var source = '//plot.ly/~andaya92/2.embed';
 	var isFilled1 = false;
 	var isFilled2 = false;
 	console.log("adwadawd", req.body.field1)
@@ -92,7 +92,7 @@ exports.showChart = function(req, res, next){
 		console.log('results1', data);
 		console.log('results2', data1);
 		
-		res.render('chart_pie', {source: source,
+		res.render('chart_pie', {
 			fake_data: data,
 			labels: labels,
 			fake_data1: data1
