@@ -76,7 +76,7 @@ exports.post_annual_report = function(req, res, next){
 	
 	var insertID = db.insert(table, formValues, function(err, result){
 		if(err){
-			var redirectUrl = "/file_form?error=" + result.sqlMessage;
+			var redirectUrl = "/file_form?error=" + result.sql;
 			res.redirect(redirectUrl);
 			console.error("Error inserting report..." , result); return;
 			
@@ -95,7 +95,7 @@ exports.post_annual_report = function(req, res, next){
 			ammonium_total: req.body.ammonium_total,
 			ammonium_available: available_ammonium,
 			nitrogen_total: req.body.nitrogen_total,	
-			volitization_loss: req.body.volitization_loss,
+			v_loss: req.body.v_loss,
 			water_result: water_result,
 			available_ammonium: available_ammonium
 			
