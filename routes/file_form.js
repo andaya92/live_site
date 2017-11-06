@@ -41,11 +41,11 @@ exports.post_annual_report = function(req, res, next){
 		total_manure: req.body.total_manure,	
 		total_ammonium: req.body.ammonium_total,	
 		total_nitrogen: req.body.nitrogen_total,	
-		volitization_loss: req.body.volitization_loss	
+		v_loss: req.body.v_loss	
 	};
 	
 	//calculate total AMMONIUM
-	var vol_loss = (100 - req.body.volitization_loss)/100; //Method of Application - Incorporated 3 day (Cool Dry weather)
+	var vol_loss = (100 - req.body.v_loss)/100; //Method of Application - Incorporated 3 day (Cool Dry weather)
 	var available_ammonium = req.body.ammonium_total * vol_loss;
 	
 	//calculate total water use
@@ -68,7 +68,7 @@ exports.post_annual_report = function(req, res, next){
             total_manure:  req.body.total_manure,
             ammonium_total: req.body.ammonium_total,
             ammonium_available: available_ammonium,
-            volatilization_loss: req.body.volitization_loss,
+            volatilization_loss: req.body.v_loss,
 			nitrogen_total: req.body.nitrogen_total,
 			nitrogen_available: 0
 			
@@ -94,10 +94,9 @@ exports.post_annual_report = function(req, res, next){
 			ammonium_total: req.body.ammonium_total,
 			ammonium_available: available_ammonium,
 			nitrogen_total: req.body.nitrogen_total,	
-			volitization_loss: req.body.volitization_loss,
 			water_result: water_result,
 			available_ammonium: available_ammonium,
-			volitization_loss: req.body.volitization_loss	
+			v_loss: req.body.v_loss	
 			
 		});
 	});

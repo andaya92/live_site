@@ -6,15 +6,17 @@ body {
 a {
   color: #00B7FF;
 }
-button{
+.butt{
 	clear: both;
 	
+}
+form{
+	 display: inline-block;
 }
 fieldset{
 	 -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  float: left;
  
   padding: 20px;
   overflow: hidden;

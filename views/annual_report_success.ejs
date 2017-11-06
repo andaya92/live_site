@@ -3,7 +3,7 @@
 <head>
 		<% include templates/header.ejs %>
 		<title><%= title %></title>
-		<link rel='stylesheet' type="text/css"  href='/css/form_style.css' />
+		<link rel='stylesheet' type="text/css"  href='/form_style.css' />
 		<h1 style="color:red;"><%= error %></h1>
 </head>
 	<body>
@@ -21,7 +21,7 @@
 				<p><b><span class="blackText">Total Ammonium: </b></span><span class="blueText"><%= ammonium_total %></span></p>
 				<p><b><span class="blackText">Available Ammonium: </b></span><span class="blueText"><%= ammonium_available %></span></p>
 				<p><b><span class="blackText">Total Nitrogen: </b></span><span class="blueText"><%= nitrogen_total %></span></p>
-				<p><b><span class="blackText">Volitization Loss: </b></span><span class="blueText"><%= volatilization_loss %>%</span></p>
+				<p><b><span class="blackText">Volitization Loss: </b></span><span class="blueText"><%= v_loss %>%</span></p>
 		</fieldset>	 	
 		</p>
 		

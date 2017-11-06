@@ -33,7 +33,7 @@
 	}
 	</Style>
 		<title><%= title %></title>
-		<link rel='stylesheet' href="/css/style.css" />
+		<link rel='stylesheet' type="text/css"  href='/form_style.css' />
 		<% include templates/header.ejs %>
 		<h1><%= errors %> </h1>
 </head>
@@ -41,7 +41,7 @@
 	<p>
 		
 
-	<form action="" method="post" id="cust_search_form">
+	<form action="" method="post">
 	<fieldset >
 		<legend>Search Customers</legend>
 			<p><label class="field" for="first_name" width="50px">First name:  </label><input type="text" name="first_name" class="textbox-300" width="50px" placeholder="Billy"/>
@@ -60,7 +60,7 @@
 <!--                                       SPLIT BETWEEN SEACH FORMS -->
 		
 
-	<form action="" method="post" id="dairy_search_form">
+
 	<fieldset>
 		<legend>Search Dairies</legend>
 			<p><label class="field" for="dairy_name" width="50px">Dairy name:  </label><input type="text" name="dairy_name" class="textbox-300" width="50px" placeholder="DMerica"/>
@@ -74,7 +74,7 @@
     	
    			 
 	</fieldset>
-   			<p><input type="submit" value="Submit"></p> 
+   			<p><input type="submit" value="Submit" align="bottom"></p> 
 </form>
 	</p>
 	
@@ -141,7 +141,7 @@
 				document.getElementById("<%= row._id %>detail").addEventListener("click", function(){
 				var newurl = location.hostname + ":" + location.port;
 				//alert(newurl + "/create_form");
-				window.location.assign( "/showDetails?id=<%= row.dairy_id %>&table=1 ");
+				window.location.assign( "/showDetails?id=<%= row.dairy_id %>&table=2 ");
 				}, false);
 				
 			</script>
