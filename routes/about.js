@@ -186,7 +186,7 @@ exports.post = function(req, res, next){
 	
 	
 
-	var customer_query = createCuawstomerSQL(customer_field_results, customer_projection, 'customers', customer_col_keys, customer_col_values);
+	var customer_query = createCustomerSQL(customer_field_results, customer_projection, 'customers', customer_col_keys, customer_col_values);
 	console.log("createSQL C: ", customer_query);
 	
 	var dairy_query = createCustomerSQL(dairy_field_results, dairy_projection, 'dairies', dairy_col_keys, dairy_col_values);
