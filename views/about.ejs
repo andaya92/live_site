@@ -33,7 +33,7 @@
 	}
 	</Style>
 		<title><%= title %></title>
-		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<link rel='stylesheet' href="/css/style.css" />
 		<% include templates/header.ejs %>
 		<h1><%= errors %> </h1>
 </head>
@@ -141,7 +141,7 @@
 				document.getElementById("<%= row._id %>detail").addEventListener("click", function(){
 				var newurl = location.hostname + ":" + location.port;
 				//alert(newurl + "/create_form");
-				window.location.assign( "/showDetails?id=<%= row.dairy_id %>&table=0 ");
+				window.location.assign( "/showDetails?id=<%= row.dairy_id %>&table=1 ");
 				}, false);
 				
 			</script>

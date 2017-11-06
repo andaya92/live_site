@@ -34,7 +34,7 @@ app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
-app.use(express.static(__dirname+ '/public'));//changed from path.join(a,b) because joining strings this way did not work well on windows apparently...
+app.use(express.static( __dirname + '/public'));//changed from path.join(a,b) because joining strings this way did not work well on windows apparently...
 app.use(expressValidator());
 
 // development only
