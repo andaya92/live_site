@@ -1,29 +1,38 @@
 <!DOCTYPE HTML>
 <html>
 <head>
- <meta charset="UTF-8">
+ <style>
 
+	fieldset{
+	width: 750px;
+	 display: inline-block;
+	}
 
-  <% include templates/header.ejs %>
+	</Style>
+
+	<link rel='stylesheet' type="text/css" href='/stylesheets/style.css' />
+  	<% include templates/header.ejs %>
 </head>
 <body>
 
 
 
-
-	<form action="" method="post">
-		<fieldset legend="I am Legend">
+<p>
+	<form  action="" method="post">
+		
+		<fieldset>
+		<legend>I am Legend</legend>
 				<label class="field" for="field1">Dataset 1</label><input type="text" name="field1" value=" " placeholder="Dataset 1"/>
 				<label class="field" for="field2">Dataset 2</label><input type="text" name="field2" value=" " placeholder="Dataset 2"/>
 				<input type="submit" value="Suh-mit"></input>
 		</fieldset>
 	</form>
+<p>
 
 
 
 
-
-	<div style="width: 900px; height: 300px;">
+	<div style="width: 400px; height: 300px;">
 		<canvas id="myChart" width="400" height="400"></canvas>
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
