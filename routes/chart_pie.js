@@ -1,4 +1,3 @@
-var plotly = require('plotly')("andaya92", "H5Rps0S3sIDaLPfzhg0X");
 var db = require('../dbHelper')
 var ejs = require('ejs');
 var async = require('async');
