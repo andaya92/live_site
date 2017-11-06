@@ -41,7 +41,7 @@ exports.post_annual_report = function(req, res, next){
 		total_manure: req.body.total_manure,	
 		total_ammonium: req.body.ammonium_total,	
 		total_nitrogen: req.body.nitrogen_total,	
-		v_loss: req.body.v_loss	
+		volitization_loss: req.body.v_loss	
 	};
 	
 	//calculate total AMMONIUM
@@ -73,11 +73,12 @@ exports.post_annual_report = function(req, res, next){
 			nitrogen_available: 0
 			
 	};
+	
 	var insertID = db.insert(table, formValues, function(err, result){
 		if(err){
 			var redirectUrl = "/file_form?error=" + result.sqlMessage;
 			res.redirect(redirectUrl);
-			console.error("Error inserting report..." , redirectUrl); return;
+			console.error("Error inserting report..." , result); return;
 			
 		}
 		console.log("Insert ID: ", result);
@@ -94,9 +95,9 @@ exports.post_annual_report = function(req, res, next){
 			ammonium_total: req.body.ammonium_total,
 			ammonium_available: available_ammonium,
 			nitrogen_total: req.body.nitrogen_total,	
+			volitization_loss: req.body.volitization_loss,
 			water_result: water_result,
-			available_ammonium: available_ammonium,
-			v_loss: req.body.v_loss	
+			available_ammonium: available_ammonium
 			
 		});
 	});
